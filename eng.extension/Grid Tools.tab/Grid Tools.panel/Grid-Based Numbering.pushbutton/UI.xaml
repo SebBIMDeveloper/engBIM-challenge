@@ -1,0 +1,126 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ENG Grid Numbering"
+        Height="670"
+        Width="630"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="White">
+
+    <Grid Margin="10">
+
+        <StackPanel Orientation="Vertical" Width="530" Height="650">
+
+            <!-- SECTION 1: ENG LOGO -->
+            <Image x:Name="engLogo"
+                   Source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeRdZAVw9FQJk_c0Gn1XacB0v-ir8sF9B2zw"
+                   Width="300" Height="50"
+                   Stretch="Uniform"
+                   HorizontalAlignment="Center"
+                   Margin="10"/>
+
+            <!-- SECTION 2: FILTER CATEGORY -->
+            <GroupBox x:Name="categoryGroupBox" Margin="0,10,0,5" Padding="10">
+                <GroupBox.Header>
+                    <TextBlock Text="Step 1: Filter by Category" FontSize="14" Foreground="#009688"/>
+                </GroupBox.Header>
+                <StackPanel>
+					<!-- Instructional text for category selection -->
+                    <TextBlock Text="Select the category you want to number:" FontSize="12" Margin="10,5,0,5" TextWrapping="Wrap"/>
+					<!-- Dropdown (ComboBox) to display available model categories -->
+                    <ComboBox x:Name="categoryComboBox" Width="484" Height="30" FontSize="12" Background="White" BorderThickness="0" Margin="10,5,0,5"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- SECTION 3: ELEMENT SELECTION -->
+            <GroupBox x:Name="selectionGroupBox" Margin="0,10,0,5" Padding="10">
+                <GroupBox.Header>
+                    <TextBlock Text="Step 2: Select Elements and Reference" FontSize="14" Foreground="#009688"/>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Panel for selecting elements -->
+                    <StackPanel Grid.Column="0" Margin="10">
+                        <TextBlock Text="2.1 Select the elements you want to number based on the grids:" 
+                                   FontSize="12" Margin="10,5,0,5" TextWrapping="Wrap"/>
+                        <!-- Button to select model elements -->
+						<Button x:Name="btnSelectElements" Content="Select Model Elements"
+                                Width="210" Height="40" Margin="10,5,0,5"
+                                Click="on_select_elements_click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- Panel for selecting reference element -->
+                    <StackPanel Grid.Column="1" Margin="10">
+                        <TextBlock Text="2.2 Select a reference element to start numbering:" 
+                                   FontSize="12" Margin="10,5,0,5" TextWrapping="Wrap"/>
+                        <!-- Button to select the reference element -->
+						<Button x:Name="btnSelectStartElement" Content="Select Start Element"
+                                Width="210" Height="40" Margin="10,5,0,5"
+                                Click="on_select_start_element_click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <!-- SECTION 4: NUMBERING -->
+            <GroupBox x:Name="numberingGroupBox" Margin="0,10,0,5" Padding="10">
+                <GroupBox.Header>
+                    <TextBlock Text="Step 3: Numbering" FontSize="14" Foreground="#009688"/>
+                </GroupBox.Header>
+                <StackPanel>
+                    <TextBlock Text="Click to start numbering process:" FontSize="12" Margin="10,5,0,5" TextWrapping="Wrap"/>
+                    <StackPanel HorizontalAlignment="Center">
+						<!-- Button to trigger the numbering process -->
+                        <Button x:Name="btnNumberElements" Content="Start Numbering"
+                                Width="210" Height="40" Margin="10,5,0,5"
+                                Click="on_start_numbering_click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- SECTION 5: PROGRESS BAR WITH PERCENTAGE TEXT -->
+            <Grid Margin="0,20,0,0"> 
+                <!-- Progress bar showing numbering progress-->
+                <ProgressBar x:Name="progressBar" Width="500" Height="20" Foreground="#009688" Background="LightGray"/>
+
+                <!-- Text block displaying progress percentage over the progress bar -->
+                <TextBlock x:Name="progressText" 
+                           Text="0%"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
